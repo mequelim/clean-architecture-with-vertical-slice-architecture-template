@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CleanArchWithVerticalSliceArchTemplate.Application/CleanArchWithVerticalSliceArchTemplate.Application.csproj" />
+  <Project Path="CleanArchWithVerticalSliceArchTemplate.Domain/CleanArchWithVerticalSliceArchTemplate.Domain.csproj" />
+  <Project Path="CleanArchWithVerticalSliceArchTemplate.Infrastructure/CleanArchWithVerticalSliceArchTemplate.Infrastructure.csproj" />
+  <Project Path="CleanArchWithVerticalSliceArchTemplate.WebApi/CleanArchWithVerticalSliceArchTemplate.WebApi.csproj" />
+</Solution>

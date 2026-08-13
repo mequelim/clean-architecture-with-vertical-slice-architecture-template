@@ -1,0 +1,52 @@
+services:
+
+  # ------------------------------------
+  # Infrastructure
+  # ------------------------------------
+
+  vertical-slice-clean-architecture-database:
+    container_name: vertical-slice-clean-architecture-postgresql
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - vertical-slice-clean-architecture_database:/var/lib/postgresql
+    restart: always
+
+  # ------------------------------------
+  # Applications
+  # ------------------------------------
+
+  vertical-slice-clean-architecture:
+    container_name: vertical-slice-clean-architecture
+    image: vertical-slice-clean-architecture
+    build:
+      context: .
+      target: vertical-slice-clean-architecture
+    env_file:
+      - .env
+    environment:
+      ConnectionStrings__Default: >-
+        Host=vertical-slice-clean-architecture;Port=5432;
+        Database=${DB_NAME};
+        Username=${DB_USER};
+        Password=${DB_PASSWORD}
+    ports:
+      - "5000:8080"
+    depends_on:
+      - vertical-slice-clean-architecture-database
+    restart: always
+
+# ------------------------------------
+# Volumes
+# ------------------------------------
+
+volumes:
+  vertical-slice-clean-architecture_database:
+    driver: local
