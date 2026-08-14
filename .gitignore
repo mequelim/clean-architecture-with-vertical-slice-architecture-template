@@ -66,11 +66,10 @@ wsl.conf
 
 # Environment files and credentials
 .env
-.env.*
-# .env.local
-# .env.development
-# .env.production
-# .env.test
+.env.local
+.env.development
+.env.production
+.env.test
 .envrc
 .direnv
 .config/
